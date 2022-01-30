@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var characters = [
+var hotels = [
   {
     routeName: "sheraton",
     name: "Sheraton Hotel",
@@ -54,9 +54,9 @@ app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-// Displays all characters
+// Displays all hotels
 app.get("/api/tables", function(req, res) {
-  return res.json(characters);
+  return res.json(hotels);
 });
 
 // Displays a single character, or returns false
@@ -65,9 +65,9 @@ app.get("/api/tables/:table", function(req, res) {
 
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (var i = 0; i < hotels.length; i++) {
+    if (chosen === hotels[i].routeName) {
+      return res.json(hotels[i]);
     }
   }
 
@@ -86,7 +86,7 @@ app.post("/api/tables", function(req, res) {
 
   console.log(newcharacter);
 
-  characters.push(newcharacter);
+  hotels.push(newcharacter);
 
   res.json(newcharacter);
 });
